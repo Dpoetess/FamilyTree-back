@@ -1,4 +1,5 @@
 from django.db import models
+from nodes.models import Node
 
 
 class Person(models.Model):
@@ -18,6 +19,7 @@ class Person(models.Model):
     gender = models.CharField(max_length=10, choices=(('male', 'Male'), ('female', 'Female'), ('other', 'Other')), null=True, blank=True)
     notes = models.TextField(null=True, blank=True)
     photo = models.ImageField(upload_to='images/', null=True, blank=True)
+    nodes = models.ManyToManyField(Node, related_name="persons", blank=True)
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
