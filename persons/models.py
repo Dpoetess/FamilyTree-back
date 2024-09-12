@@ -1,3 +1,4 @@
+from cloudinary.models import CloudinaryField
 from django.db import models
 from nodes.models import Node
 
@@ -18,7 +19,7 @@ class Person(models.Model):
     is_living = models.BooleanField(default=True)
     gender = models.CharField(max_length=10, choices=(('male', 'Male'), ('female', 'Female'), ('other', 'Other')), null=True, blank=True)
     notes = models.TextField(null=True, blank=True)
-    photo = models.ImageField(upload_to='images/', null=True, blank=True)
+    photo = CloudinaryField('image', null=True, blank=True)
     nodes = models.ManyToManyField(Node, related_name="persons", blank=True)
 
     def __str__(self):
