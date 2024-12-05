@@ -11,5 +11,5 @@ class TreeViewSet(viewsets.ModelViewSet):
     permission_classes = [AllowAny]
 
     def perform_create(self, serializer):
-        default_user = User.objects.get(id=1)  # Replace with the default user logic
+        default_user = User.objects.get(id=1)
         serializer.save(user=default_user)
